@@ -69,10 +69,7 @@ async function mostrarRegistro() {
 				console.log(e.target.dataset.id)
 				await deleteRegistro(e.target.dataset.id)
 				await mostrarRegistro()
-				total -= e.target.dataset.money
-				setTimeout(function() {
-					location.reload()
-				}, 2000);
+				await mostrarMoney()
 			})
 		})
 	});
@@ -96,10 +93,7 @@ async function mostrarRegistro() {
 				console.log(e.target.dataset.id)
 				await deleteEgreso(e.target.dataset.id)
 				await mostrarRegistro()
-				total += e.target.dataset.money
-				setTimeout(function() {
-					location.reload()
-				}, 2000);
+				await mostrarMoney()
 			})
 		})
 	});
@@ -109,6 +103,7 @@ async function mostrarRegistro() {
 const getMoney = () => db.collection("registro").get();
 const getMenos = () => db.collection("egreso").get();
 async function mostrarMoney() {
+	total = 0
 	/*formatea el registro cada que se llama la funcion*/
 	moneyCard.innerHTML = '';
 	/*accede a los datos*/
@@ -161,9 +156,8 @@ moneyForm.addEventListener('submit', async (e) => {
 	await save(title, cantidad)
 	console.log(`Enviando => ${title}::${cantidad}`);
 
-	setTimeout(function() {
-		location.reload()
-	}, 2000);
+	await mostrarRegistro()
+	await mostrarMoney()
 });
 
 /*formulario del egreso*/
@@ -176,7 +170,6 @@ egresoForm.addEventListener('submit', async (e) => {
 	await saveEgreso(title, cantidad)
 	console.log(`Enviando => ${title}::${cantidad}`);
 
-	setTimeout(function() {
-		location.reload()
-	}, 2000);
+	await mostrarRegistro()
+	await mostrarMoney()
 });
