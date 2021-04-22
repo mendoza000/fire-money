@@ -127,17 +127,40 @@ async function mostrarMoney() {
 	});
 	/*status*/
 	if (total > 10000) {
-		statusCard.innerHTML = '<p class="text-center m-0" style="font-size: 1.5em">Ganando 📈</p>';
+		statusCard.innerHTML = `
+		<div class="bg-primary col py-2" style="margin-left: 15px">
+			<p class="text-center m-0 text-light" style="font-size: 1.5em; margin-top: 5px">Estado</p>
+		</div>
+		<div class="col m-0 py-2">
+			<p class="text-center m-0" style="font-size: 1.5em; margin-top: 5px">Ganando 📈</p>
+		</div>`;
 		}
 	else if (total < 0) {
-		statusCard.innerHTML = '<p class="text-center m-0" style="font-size: 1.5em">Perdiendo 📉</p>';
+		statusCard.innerHTML = `
+		<div class="bg-danger col py-2" style="margin-left: 15px">
+			<p class="text-center m-0 text-light" style="font-size: 1.5em; margin-top: 5px">Estado</p>
+		</div>
+		<div class="col m-0 py-2">
+			<p class="text-center m-0" style="font-size: 1.5em; margin-top: 5px">Perdiendo 📉</p>
+		</div>`;
 		}
 	else{
-		statusCard.innerHTML = '<p class="text-center m-0" style="font-size: 1.5em">Neutro 🐤</p>';
+		statusCard.innerHTML = `
+		<div class="bg-primary col py-2" style="margin-left: 15px">
+			<p class="text-center m-0 text-light" style="font-size: 1.5em; margin-top: 5px">Estado</p>
+		</div>
+		<div class="col m-0 py-2">
+			<p class="text-center m-0" style="font-size: 1.5em; margin-top: 5px">Neutro 🐤</p>
+		</div>`;
 		}
 
 	moneyCard.innerHTML = `
-		<p class="text-center m-0" style="font-size: 1.5em">${total} $</p>`;
+		<div class="bg-primary col py-2" style="margin-left: 15px">
+			<p class="text-center m-0 text-light" style="font-size: 1.5em; margin-top: 5px">Total</p>
+		</div>
+		<div class="col m-0 py-2">
+			<p class="text-center m-0" style="font-size: 1.5em; margin-top: 5px">${total}$</p>
+		</div>`;
 }
 
 /*cuando se carga el crud se ejecuta...*/
